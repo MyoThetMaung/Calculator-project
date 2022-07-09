@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app" class="m-3">
+        <div class="row my-5 justify-content-center">
+            <div class="col-6">
+                <h1 class="text-success text-center mb-4">Calculator</h1>
+                <div class="card bg-dark bg-gradient">
+                    <div class="card-body">
+                        <div class=" p-3 bg-light bg-gradient rounded mb-3 d-flex justify-content-end ">
+                            {{ info }}
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <input type="text" v-model="number1" class="form-control" placeholder="Enter First Number">
+                                <small class="text-danger" v-if="firstStatus">First number is required</small>
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="text" v-model="number2" class="form-control" placeholder="Enter Second Number">
+                                <small class="text-danger" v-if="secondStatus">Second number is required</small>
+                            </div>
+                            <div class="col-3 mt-3">
+                                <select name="operator" v-model="operator" class="form-select">
+                                    <option value="">Select operator</option>
+                                    <option value="+">+</option>
+                                    <option value="-">-</option>
+                                    <option value="*">*</option>
+                                    <option value="/">/</option>
+                                </select>
+                                <small class="text-danger" v-if="operatorStatus">Operator is required</small>
+                            </div>
+                            <div class="col-9 mt-3 d-flex justify-content-end">
+                                <button class=" btn btn-warning" @click="save()">Save</button>
+                                <button class="mx-5 btn btn-danger" @click="clearAll()">Clear</button>
+                                <button class=" btn btn-success" @click="calculate()">Calculate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <h4 class="text-warning">History</h4>
+                        <div class="text-white" v-for="his in history">
+                            {{ his }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
